@@ -10,9 +10,9 @@ Primeira Classe - criada
 # Atribuir Metode (Função que pertence a uma classe, sempre conectado a um objeto
 
 class Pessoa: # Objeto tipo pessoa, dentro de uma lista que é atributo que é instancia da própria classe pessoa.
-    def __init__(self, *filhos, nome = None, idade=35):    # Criando método especial -- self.nome ( O nome é o nome do objeto self)
+    def __init__(self, *filhos, nome = None, idade=35):
         self.idade = idade
-        self.nome = nome          # Criando atributo
+        self.nome = nome          # Criando método especial -- self.nome ( O nome é o nome do objeto self)
         self.filhos = list(filhos)          # Criando a lista filhos, objeto complexo
 
     # Atributos de instância e de objetos são criados atreves do metódo __init__
@@ -32,4 +32,11 @@ if __name__ == '__main__':
     # print(p.nome)
     print(sabina.idade)
     for filho in sabina.filhos:
-        print('Filhos:', filho.nome)  # Lista com todo os filhos
+        print('Filhos:', filho.nome)  # Lista com todos os filhos
+
+    guilherme.sobrenome = 'Neto'  # Adicinando atributo para objeto especifico de maneira DINÂMICA
+    del sabina.filhos             # Deleta os atributos do objeto sabina, remover de forms DINÂMICA, não é boa prática!
+    print(guilherme.__dict__)    # Atributo especial, acessar dict do objeto guilherme, todos os atributos complexos e dinâmicos
+    print(sabina.__dict__)
+
+
