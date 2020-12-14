@@ -19,8 +19,17 @@ class Pessoa: # Objeto tipo pessoa, dentro de uma lista que é atributo que é i
 
     # Atributos de instância e de objetos são criados atreves do metódo __init__
 
-    def cumprimentar(self):  # Metodo: cumprimentar / Objeto:self
+    def cumprimentar(self):  # Metodo: cumprimentar / Objeto indice:self
         return f'Olá {id(self)}'  # f string!
+
+    @staticmethod         # Criar metodo estatico da classe, independe do objeto. Decoraitor começa com @
+    def metodo_estatico(): # Não precisa informar o parametro, devido o metodo ser da classe
+        return 42
+
+    @classmethod     # Criar metodo estatico da classe, independe do objeto. Decoraitor começa com @. Tera acesso a classe que esta executando.
+    def nome_e_atributos_de_classe(cls):  # cls é preenchido automatico, cls = 'class'
+        return f'{cls} - olhos {cls.olhos}'  # Acessar o atribuo olhos da classe Pessoa
+
 
 
 if __name__ == '__main__':
@@ -40,9 +49,17 @@ if __name__ == '__main__':
     del sabina.filhos             # Deleta os atributos do objeto sabina, remover de forms DINÂMICA, não é boa prática!
     print(guilherme.__dict__)    # Atributo especial __dict__, acessa atributos de instância do objeto guilherme, todos os atributos complexos e dinâmicos
     print(sabina.__dict__)
+    print('---' * 30)
 
     print('Mostrando o atributo da classe (olhos):', Pessoa.olhos)
     print('Atributo da classe, acessado pelo ojeto guilherme:', guilherme.olhos)
     print("Mostrando que o id é igual para todos os acesso:", id(Pessoa.olhos), "-", id(guilherme.olhos), '-', id(sabina.olhos))
+    print('---' * 30)
+
+    print('Mostrando o metodo estático da classe:', Pessoa.metodo_estatico(),'\nMetodo estático da classe acessado pelo objeto guilherme:', guilherme.metodo_estatico())
+
+    print('---'*30)
+
+    print('Mostrando o metodo da classe:', Pessoa.nome_e_atributos_de_classe(),'\nMetodo da classe acessado pelo objeto guilherme:', guilherme.nome_e_atributos_de_classe())
 
 
