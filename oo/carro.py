@@ -1,3 +1,5 @@
+
+
 """
 Você deve criar uma classe carro que vai possuir dois atributos compostos por duas outras classe:
 1. Motor
@@ -24,20 +26,20 @@ O   L
   >>> motor = Motor()
   >>> motor.velocidade
   0
-  >>>motor.acelerar()
+  >>> motor.acelerar()
   >>> motor.velocidade
   1
-  >>>motor.acelerar()
+  >>> motor.acelerar()
   >>> motor.velocidade
   2
-  >>>motor.acelerar()
+  >>> motor.acelerar()
   >>> motor.velocidade
   3
 
-  >>>motor.frear()
+  >>> motor.frear()
   >>> motor.velocidade
   1
-  >>>motor.frear()
+  >>> motor.frear()
   >>> motor.velocidade
   0
 
@@ -67,7 +69,7 @@ O   L
  >>> direcao.valor
  'Leste'
 
- >>> carro = Carro(direcao, motor)
+ >>> carro = Carro(direcao,motor)
  >>> carro.calcular_velocidade()
  0
  >>> carro.acelerar()
@@ -85,7 +87,46 @@ O   L
  >>> carro.calcular_direcao()
  'Sul'
 
-
-
-
 """
+
+# Convensão para variável constante
+
+NORTE = 'Norte'
+SUL = 'Sul'
+LESTE = 'Leste'
+OESTE = 'Oeste'
+
+
+class Direcao:
+    rotacao_a_direita_dct = {NORTE: LESTE, LESTE: SUL, SUL: OESTE, OESTE: NORTE}
+    rotacao_a_esquerda_dct = {NORTE: OESTE, LESTE: NORTE, SUL: LESTE, OESTE: SUL}
+
+    def  __init__(self):
+                self.valor = NORTE         # Norte é a partida da direção!!
+
+    def girar_a_direita(self):
+        self.valor = self.rotacao_a_direita_dct[self.valor]  # Maneira de não utilizar o If, diminuindo o código.
+
+        # if self.valor == NORTE:
+        #     self.valor = LESTE
+        # elif self.valor == LESTE:
+        #     self.valor = SUL
+        # elif self.valor == SUL:
+        #     self.valor = OESTE
+
+    def girar_a_esquerda(self):
+        self.valor = self.rotacao_a_esquerda_dct[self.valor]
+
+
+class Motor:
+    def __init__(self):
+        self.velocidade = 0
+
+    def acelerar(self):
+        self.velocidade += 1
+
+    def frear(self):
+        self.velocidade -= 2
+        self.velocidade=max(0, self.velocidade)    # Função Max - Se existir valor menor que '0', retorna o '0', se não retorna o valor da velocidade.
+
+
