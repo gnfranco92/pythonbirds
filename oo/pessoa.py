@@ -30,10 +30,12 @@ class Pessoa: # Objeto tipo pessoa, dentro de uma lista que é atributo que é i
     def nome_e_atributos_de_classe(cls):  # cls é preenchido automatico, cls = 'class'
         return f'{cls} - olhos {cls.olhos}'  # Acessar o atribuo olhos da classe Pessoa
 
-
+# Herença, reutilizar o código de uma classe ja pre-existente
+class Homem(Pessoa):
+    pass
 
 if __name__ == '__main__':
-    guilherme = Pessoa(nome='Guilherme')   # Alterando o nome ja na construção
+    guilherme = Homem(nome='Guilherme')   # Alterando o nome ja na construção e Utilizando a classe herdada Homem.
     sabina = Pessoa(guilherme,nome='Sabina')  # Guilherme entra como filho da Sabina.
     print(Pessoa.cumprimentar(sabina))  # Não é usual executar o método desta maneira
     print(id(sabina))
@@ -61,5 +63,20 @@ if __name__ == '__main__':
     print('---'*30)
 
     print('Mostrando o metodo da classe:', Pessoa.nome_e_atributos_de_classe(),'\nMetodo da classe acessado pelo objeto guilherme:', guilherme.nome_e_atributos_de_classe())
+
+    print('---'*30)
+
+    # Se o objeto pessoa é do tipo Pessoa.
+    pessoa = Pessoa('Anonimo')
+    print('Se o objeto pessoa é do tipo Pessoa.')
+    print(isinstance(pessoa, Pessoa))
+    print('Se o objeto pessoa é do tipo Homem.')
+    print(isinstance(pessoa, Homem))
+
+    print('Se a instância de homem pessoa é do tipo Pessoa.')
+    print(isinstance(guilherme, Pessoa))
+    print('Se a instância de homem pessoa é do tipo Homem.')
+    print(isinstance(guilherme, Homem))
+
 
 
