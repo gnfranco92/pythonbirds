@@ -34,8 +34,11 @@ class Pessoa: # Objeto tipo pessoa, dentro de uma lista que é atributo que é i
 class Homem(Pessoa):
     pass
 
+class Mutante(Pessoa):
+    olhos = 3
+
 if __name__ == '__main__':
-    guilherme = Homem(nome='Guilherme')   # Alterando o nome ja na construção e Utilizando a classe herdada Homem.
+    guilherme = Mutante(nome='Guilherme')   # Alterando o nome ja na construção e Utilizando a classe herdada Homem.
     sabina = Pessoa(guilherme,nome='Sabina')  # Guilherme entra como filho da Sabina.
     print(Pessoa.cumprimentar(sabina))  # Não é usual executar o método desta maneira
     print(id(sabina))
@@ -49,8 +52,8 @@ if __name__ == '__main__':
 
     guilherme.sobrenome = 'Neto'  # Adicinando atributo para objeto especifico de maneira DINÂMICA
     del sabina.filhos             # Deleta os atributos do objeto sabina, remover de forms DINÂMICA, não é boa prática!
-    print(guilherme.__dict__)    # Atributo especial __dict__, acessa atributos de instância do objeto guilherme, todos os atributos complexos e dinâmicos
-    print(sabina.__dict__)
+    print('Mostra o __dict__ de Guilherme: ', guilherme.__dict__)    # Atributo especial __dict__, acessa atributos de instância do objeto guilherme, todos os atributos complexos e dinâmicos
+    print('Mostra o __dict__ de Sabina: ', sabina.__dict__)
     print('---' * 30)
 
     print('Mostrando o atributo da classe (olhos):', Pessoa.olhos)
@@ -77,6 +80,12 @@ if __name__ == '__main__':
     print(isinstance(guilherme, Pessoa))
     print('Se a instância de homem pessoa é do tipo Homem.')
     print(isinstance(guilherme, Homem))
+
+    print('---' * 30)
+
+    # Sobrescria de Atributos
+
+    print('Mostra quantos olhos o Guilherme tem: ', guilherme.olhos)
 
 
 
