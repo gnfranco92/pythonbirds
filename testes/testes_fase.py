@@ -18,6 +18,7 @@ from atores import (Obstaculo, Porco, PassaroVermelho, PassaroAmarelo,
                     DESTRUIDO, ATIVO, DuploLancamentoExcecao)
 from fase import Fase, Ponto, EM_ANDAMENTO, VITORIA, DERROTA
 
+# Classes Fake foram criadaras para realizar testes unitários!
 
 class AtorFake:
     def __init__(self, x=0, y=0):

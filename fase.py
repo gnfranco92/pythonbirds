@@ -23,7 +23,6 @@ class Ponto():
     def __repr__(self, *args, **kwargs):
         return "Ponto(%s,%s,'%s')" % (self.x, self.y, self.caracter)
 
-
 class Fase():
     def __init__(self, intervalo_de_colisao=1):
         """
@@ -76,7 +75,7 @@ class Fase():
 
         :return:
         """
-        return EM_ANDAMENTO
+        return VITORIA
 
     def lancar(self, angulo, tempo):
         """
