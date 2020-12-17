@@ -62,9 +62,7 @@ class Obstaculo(Ator):
 
 class Porco(Ator):
     _caracter_ativo = '@'
-
-
-
+''
 
 class DuploLancamentoExcecao(Exception):
     pass

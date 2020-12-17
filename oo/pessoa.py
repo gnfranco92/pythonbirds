@@ -20,7 +20,7 @@ class Pessoa: # Objeto tipo pessoa, dentro de uma lista que é atributo que é i
     # Atributos de instância e de objetos são criados atreves do metódo __init__
 
     def cumprimentar(self):  # Metodo: cumprimentar / Objeto indice:self
-        return f'Olá {id(self)}'  # f string!
+        return f'Olá, meu nome é: {self.nome}' # f string!
 
     @staticmethod         # Criar metodo estatico da classe, independe do objeto. Decoraitor começa com @
     def metodo_estatico(): # Não precisa informar o parametro, devido o metodo ser da classe
@@ -30,16 +30,23 @@ class Pessoa: # Objeto tipo pessoa, dentro de uma lista que é atributo que é i
     def nome_e_atributos_de_classe(cls):  # cls é preenchido automatico, cls = 'class'
         return f'{cls} - olhos {cls.olhos}'  # Acessar o atribuo olhos da classe Pessoa
 
-# Herença, reutilizar o código de uma classe ja pre-existente
-class Homem(Pessoa):
+
+class testando_metodo_super(Pessoa):
     pass
+
+# Herença, reutilizar o código de uma classe ja pré-existente
+class Homem(testando_metodo_super):
+    def cumprimentar(self):
+        #cumprimentar_da_classe = Pessoa.cumprimentar(self)      # Não é usual, porque se for pegar da classe Mutante, teria problema.
+        cumprimentar_da_classe = super().cumprimentar()          # Utilizar o método especial super, acessa os elementos da classe pai, seja ela quem for, não precisa estar descrita no ().
+        return f'{cumprimentar_da_classe}. Aperto de mão'
 
 class Mutante(Pessoa):
     olhos = 3
 
 if __name__ == '__main__':
     guilherme = Mutante(nome='Guilherme')   # Alterando o nome ja na construção e Utilizando a classe herdada Homem.
-    sabina = Pessoa(guilherme,nome='Sabina')  # Guilherme entra como filho da Sabina.
+    sabina = Homem(guilherme,nome='Sabina')  # Guilherme entra como filho da Sabina.
     print(Pessoa.cumprimentar(sabina))  # Não é usual executar o método desta maneira
     print(id(sabina))
     print(sabina.cumprimentar())  # p: objeto, objeto.método, maneira mais usual!!! - ATRIBUTO DA CLASSE
@@ -86,6 +93,14 @@ if __name__ == '__main__':
     # Sobrescria de Atributos
 
     print('Mostra quantos olhos o Guilherme tem: ', guilherme.olhos)
+
+    print('---' * 30)
+
+    # Sobrescria de Metodo
+
+    print('', guilherme.cumprimentar())
+
+    print('', sabina.cumprimentar())
 
 
 
