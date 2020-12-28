@@ -109,7 +109,7 @@ class FaseTestes(TestCase):
         fase = Fase()
         porcos = [PorcoFake(1, 1) for _ in range(2)]  # criando 2 porcos - List Comprehension!!
         passaros = [PassaroFake(1, 1) for _ in range(2)]  # criando 2 pássaros - List Comprehension!!
-        fase.adicionar_porco(*porcos)
+        fase.adicionar_porco(*porcos) # Após criar a lista com 2 porcos/passaros agora esta adicionando.
         fase.adicionar_passaro(*passaros)
 
         self.assertEqual(EM_ANDAMENTO, fase.status())
