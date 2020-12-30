@@ -166,10 +166,11 @@ class FaseTestes(TestCase):
                          'Sem porco ativo, o jogo deveria acabar com vitória')
 
     def teste_lancar_passaro_sem_erro_quando_nao_existe_passaro(self):
-        passaros = [PassaroFake(1, 1) for _ in range(2)]
+        passaros = [PassaroFake(1, 1) for _ in range(2)]    # Inserir passaros!!
         fase = Fase()
         fase.adicionar_passaro(*passaros)
-        self.assertFalse(passaros[0].foi_lancado())
+        # _lançado inicialmente é falso conforme def
+        self.assertFalse(passaros[0].foi_lancado())  # Verificação se os  passaros não foram lançados.
         self.assertFalse(passaros[1].foi_lancado())
         fase.lancar(90, 1)
         fase.lancar(45, 3)
@@ -177,7 +178,7 @@ class FaseTestes(TestCase):
                     5)  # testando que lançar passaros depios de todos
         # lançados não causa erro
 
-        self.assertTrue(passaros[0].foi_lancado())
+        self.assertTrue(passaros[0].foi_lancado()) # Verificação se os passaros foram lançados.
         self.assertTrue(passaros[1].foi_lancado())
 
     def teste_intervalo_de_colisao_padrao(self):
