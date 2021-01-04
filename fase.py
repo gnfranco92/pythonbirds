@@ -109,7 +109,15 @@ class Fase():
         :param tempo: tempo para o qual devem ser calculados os pontos
         :return: objeto do tipo Ponto
         """
-        pontos=[self._transformar_em_ponto(a) for a in self._passaros+self._obstaculos+self._porcos]
+
+        # Como os passaros são os unicos que se movimentão é necessário verificar sua posição.
+        for passaro in self._passaros:
+            passaro.calcular_posicao(tempo)
+            for alvo in self._obstaculos+self._porcos:
+                passaro.colidir(alvo, self.intervalo_de_colisao)
+            passaro.colidir_com_chao()
+
+        pontos=[self._transformar_em_ponto(a) for a in self._passaros+self._obstaculos+self._porcos] # Transformando em pontos todos os atores, baseado no tempo, ou seja a cada mile segundo por exemplo.
 
         return pontos
 
