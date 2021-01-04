@@ -64,6 +64,18 @@ class Porco(Ator):
     _caracter_ativo = '@'
 ''
 
+""" Exemplo de Execeção utilizada em def lancar - raise DuploLancamentoExcecao.
+
+try:
+     1+2 ou f()
+except DuploLancamentoExececao:
+     print('Duplo lançamento tratado')
+else:
+    print('Não aconteceu nenhuma execeção')
+
+1+2 - Não lançã execeção então o retorno é o else
+f() - Tem execeção então o retorno é o execept
+"""
 class DuploLancamentoExcecao(Exception):
     pass
 
