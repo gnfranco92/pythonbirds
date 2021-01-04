@@ -47,7 +47,7 @@ class AtorTestes(TestCase):
         """
         Teste de colisão entre dois atores
         Inicialmente atores possuem status ATIVO. Ao se chocarem, ele muda para DESTRUIDO
-        A função assert_colisao_atores_ativos testa justamente se dois atore ativos se chocam quando estão em posições
+        A função assert_colisao_atores_ativos testa justamente se dois atores ativos se chocam quando estão em posições
         vizinhas.
         """
         ator = Ator(2, 2)  # Ator recém criado deve ter status ativo
@@ -62,6 +62,7 @@ class AtorTestes(TestCase):
         self.assert_colisao_atores_ativos(Ator(2, 2), Ator(1, 2))
         self.assert_colisao_atores_ativos(Ator(2, 2), Ator(1, 3))
 
+    # Teste falha, porque a implementação esta utilizando valor constante de 1,sendo necessário utilizar o intervalo.
     def teste_colisao_entre_atores_ativos_com_intervalo(self):
         # Com intervalo 2, diferente do padrão 1, essa colisão deveria acontecer
         self.assert_colisao_atores_ativos(Ator(2, 2), Ator(2, 4), 2)
@@ -80,8 +81,8 @@ class AtorTestes(TestCase):
     def teste_colisao_somente_um_ator_destruido(self):
         'Teste de que um ator destruído não pode colidir com nenhum outro, mesmo que estejam próximos'
         ator = Ator(2, 2)
-        ator.colidir(ator, 0)  # colidindo ator com ele mesmo para alterar seu status para destruido
-        ator2 = Ator(2, 2)
+        ator.colidir(ator, 0)  # colidindo ator com ele mesmo para alterar seu status para destruído
+        ator2 = Ator(2, 2)     # Criando outro ator para confirmar se o primeiro esta destruído
         self.assert_nao_colisao(ator, ator2)
         self.assert_nao_colisao(Ator(2, 3), ator)
         self.assert_nao_colisao(Ator(3, 3), ator)
