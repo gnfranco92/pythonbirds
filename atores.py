@@ -66,6 +66,9 @@ class Obstaculo(Ator):
 
 class Porco(Ator):
     _caracter_ativo = '@'
+    _caracter_destruido = '+'
+
+
 ''
 
 """ Exemplo de Execeção utilizada em def lancar - raise DuploLancamentoExcecao.

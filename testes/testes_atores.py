@@ -149,10 +149,10 @@ class ObstaculoTestes(TestCase):
     """
     def teste_status(self):
         obstaculo = Obstaculo()
-        self.assertEqual('O', obstaculo.caracter())
+        self.assertEqual('O', obstaculo.caracter())    # 'O' - O obstáculo esta ativo.
         outro_ator_na_mesma_posicao = Ator()
         obstaculo.colidir(outro_ator_na_mesma_posicao)
-        self.assertEqual(' ', obstaculo.caracter())
+        self.assertEqual(' ', obstaculo.caracter())    # Após colidir - ' ' obstáculo destruído.
 
 
 class PorcoTestes(TestCase):
