@@ -64,7 +64,7 @@ class Obstaculo(Ator):
     _caracter_ativo = 'O'
 
 
-class Porco(Ator):
+class   Porco(Ator):
     _caracter_ativo = '@'
     _caracter_destruido = '+'
 
@@ -88,6 +88,7 @@ class DuploLancamentoExcecao(Exception):
 
 
 class Passaro(Ator):
+    # Cada pássaro tem sua velocidade escalar. Vermelho = 20.
     velocidade_escalar = 10
 
     def __init__(self, x=0, y=0):
@@ -157,3 +158,5 @@ class PassaroAmarelo(Passaro):
 
 class PassaroVermelho(Passaro):
     _caracter_ativo = 'V'
+    _caracter_destruido = 'v'
+    velocidade_escalar = 20

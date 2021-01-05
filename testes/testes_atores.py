@@ -186,9 +186,9 @@ class PassaroBaseTests(TestCase):
         :param tempo: tempo do jogo
         """
         x_calculado, y_calculado = passaro.calcular_posicao(tempo)
-        self.assertEqual(x_esperado, round(x_calculado), 'valor real de x = %s' % x_calculado)
+        self.assertEqual(x_esperado, round(x_calculado), 'valor real de x = %s' % x_calculado)    # Round, irá arredondar o valor calculado da posição.
         self.assertEqual(y_esperado, round(y_calculado), 'valor real de y = %s' % y_calculado)
-        self.assertEqual(status_esperado, passaro.status, '(x = %s, y = %s)' % (x_calculado, y_calculado))
+        self.assertEqual(status_esperado, passaro.status, '(x = %s, y = %s)' % (x_calculado, y_calculado))   # Compara o status esperado com o atual.
 
 
 class PassaroVermelhoTests(PassaroBaseTests):
@@ -196,6 +196,7 @@ class PassaroVermelhoTests(PassaroBaseTests):
     Classe de teste e Passaro Vermelho
     """
 
+    # Ao testar falta o caracter 'v' de destruído.
     def teste_status(self):
         passaro_vermelho = PassaroVermelho(1, 1)
         self.assertEqual('V', passaro_vermelho.caracter())
@@ -204,7 +205,7 @@ class PassaroVermelhoTests(PassaroBaseTests):
         self.assertEqual('v', passaro_vermelho.caracter())
 
 
-    def teste_velocidade_escalar(self):
+    def teste_velocidade_escalar(self):   # Teste "passou".
         self.assertEqual(20, PassaroVermelho.velocidade_escalar)
 
 
