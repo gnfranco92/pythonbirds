@@ -211,14 +211,14 @@ class PassaroVermelhoTests(PassaroBaseTests):
 
     def teste_foi_lancado(self):
         """
-        Teste de lançamento. Enquanto o método lançar do passaro não for chamado, o méotodo foi_lancado deve retornar
+        Teste de lançamento. Enquanto o método lançar do pássaro não for chamado, o método foi_lancado deve retornar
         Falso
         :return:
         """
         passaro_vermelho = PassaroVermelho(1, 1)
         self.assertFalse(passaro_vermelho.foi_lancado(),
                          'Se o método lançar ainda não foi executado, deve retornar falso')
-        passaro_vermelho.lancar(0, 0)
+        passaro_vermelho.lancar(0, 0)   # Método lançar
         self.assertTrue(passaro_vermelho.foi_lancado(),
                         'Se o método lançar foi executado, deve retornar verdadeiro')
 
