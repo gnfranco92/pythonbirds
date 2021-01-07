@@ -251,13 +251,13 @@ class PassaroAmareloTests(PassaroBaseTests):
 
     def teste_status(self):
         passaro_amarelo = PassaroAmarelo(1, 1)
-        self.assertEqual('A', passaro_amarelo.caracter())
+        self.assertEqual('A', passaro_amarelo.caracter())  # Validando esta função.
         outro_ator_na_mesma_posicao = Ator()
         passaro_amarelo.colidir(outro_ator_na_mesma_posicao)
         self.assertEqual('a', passaro_amarelo.caracter())
 
     def teste_velocidade_escalar(self):
-        self.assertEqual(30, PassaroAmarelo.velocidade_escalar)
+        self.assertEqual(30, PassaroAmarelo.velocidade_escalar)  # Velocidade escalar deve ser 30.
 
     def teste_lacamento_vertical(self):
         """
@@ -265,11 +265,11 @@ class PassaroAmareloTests(PassaroBaseTests):
         :return:
         """
         passaro_amarelo = PassaroAmarelo(1, 1)
-        passaro_amarelo.lancar(90, 2)  # passaro lancado a 90 graus no tempo 2 segundos
+        passaro_amarelo.lancar(90, 2)  # Pássaro lançado a 90 graus no tempo 2 segundos
 
 
 
-        # subindo
+        # subindo (y,tempo, passaro_)
 
         self.assert_posicao_vertical(1, 2.0, passaro_amarelo)
         self.assert_posicao_vertical(1, 2.01, passaro_amarelo)
@@ -278,7 +278,7 @@ class PassaroAmareloTests(PassaroBaseTests):
         self.assert_posicao_vertical(2, 2.04, passaro_amarelo)
         self.assert_posicao_vertical(2, 2.05, passaro_amarelo)
 
-        # descendo
+        # descendo (y,tempo, passaro_)
 
         self.assert_posicao_vertical(46, 5.26, passaro_amarelo)
         self.assert_posicao_vertical(46, 5.27, passaro_amarelo)
@@ -304,11 +304,11 @@ class PassaroAmareloTests(PassaroBaseTests):
         self.assert_posicao_vertical(45, 5.470000000000001, passaro_amarelo)
         self.assert_posicao_vertical(45, 5.48, passaro_amarelo)
 
-        # preparando para impacto no chão
+        # preparando para impacto no chão (y,tempo, passaro_)
         self.assert_posicao_vertical(1, 8.0, passaro_amarelo)
         self.assert_posicao_vertical(1, 8.01, passaro_amarelo)
 
-        # colisão
+        # colisão (y,tempo, passaro_)
         self.assert_posicao_vertical(0, 8.04, passaro_amarelo)
         passaro_amarelo.colidir_com_chao()
         self.assertEqual(DESTRUIDO, passaro_amarelo.status)
@@ -758,7 +758,7 @@ class PassaroAmareloTests(PassaroBaseTests):
          Método auxiliar que mantém x fixo com valor 1, status Ativo, variando apenas o tempo e a posição y
          Atenção, esse não é um teste porque não começa com prefixo "test"
          """
-        self.assert_passaro_posicao(1, y, ATIVO, passaro, tempo)
+        self.assert_passaro_posicao(1, y, ATIVO, passaro, tempo)   # x=1 é constante, a variação é somente em y.
 
 
 if __name__=='__main__':
