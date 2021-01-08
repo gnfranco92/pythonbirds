@@ -224,7 +224,7 @@ class PassaroVermelhoTests(PassaroBaseTests):
 
     def teste_colisao_com_chao(self):
         """
-        Testando que o passáro colide quando sua posição y é menor ou igual a 0
+        Testando que o pássaro colide quando sua posição y é menor ou igual a 0!
         :return:
         """
         passaro = PassaroVermelho(0, 0)

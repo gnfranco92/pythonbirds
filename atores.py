@@ -130,7 +130,9 @@ class Passaro(Ator):
         o status dos Passaro deve ser alterado para destruido, bem como o seu caracter
 
         """
-        pass
+
+        if self.y  <= 0:
+            self.status = DESTRUIDO
 
     def calcular_posicao(self, tempo):
         """
@@ -146,7 +148,7 @@ class Passaro(Ator):
         :param tempo: tempo de jogo a ser calculada a posição
         :return: posição x, y
         """
-        if self.foi_lancado():
+        if self._esta_voando():
             delta_t = tempo - self._tempo_de_lancamento
             self._calcular_posicao_vertical(delta_t)
             self._calcular_posicao_horizontal(delta_t)
@@ -163,7 +165,7 @@ class Passaro(Ator):
         :param tempo_de_lancamento:
         :return:
         """
-        self._angulo_de_lancamento = angulo
+        self._angulo_de_lancamento = math.radians(angulo)
         self._tempo_de_lancamento = tempo_de_lancamento
 
     def _calcular_posicao_vertical(self, delta_t):
@@ -175,7 +177,7 @@ class Passaro(Ator):
         :return:
         """
         y_atual = self._y_inicial
-        angulo_radianos = math.radians(self._angulo_de_lancamento)  # Converte (math.radians) graus em radianos
+        angulo_radianos = self._angulo_de_lancamento  # Converte (math.radians) graus em radianos, agora irá converter logo que recebermos o valor.
         y_atual += self.velocidade_escalar * delta_t * math.sin(angulo_radianos)   # Utiliza math.sin para calcular o seno
         y_atual -= (GRAVIDADE * (delta_t ** 2)) / 2
         self.y = y_atual
@@ -189,9 +191,16 @@ class Passaro(Ator):
         :return:
         """
         x_atual = self._x_inicial
-        angulo_radianos = math.radians(self._angulo_de_lancamento)
+        angulo_radianos = self._angulo_de_lancamento
         x_atual += self.velocidade_escalar*delta_t*math.cos(angulo_radianos)
         self.x = x_atual
+
+    def _esta_voando(self):
+        return self.foi_lancado() and self.status == ATIVO
+    #    Depois foi lançado ele pode colidir com o chão ou com outro ator, mas o status sempre será destruído. Contudo
+    # para lançar deve estar ativo, por isto esta validação.
+
+
 
 class PassaroAmarelo(Passaro):
     _caracter_ativo = 'A'
