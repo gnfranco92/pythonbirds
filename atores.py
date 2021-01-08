@@ -149,6 +149,7 @@ class Passaro(Ator):
         if self.foi_lancado():
             delta_t = tempo - self._tempo_de_lancamento
             self._calcular_posicao_vertical(delta_t)
+            self._calcular_posicao_horizontal(delta_t)
         return super().calcular_posicao(tempo)
 
 
@@ -167,8 +168,8 @@ class Passaro(Ator):
 
     def _calcular_posicao_vertical(self, delta_t):
         """
-        Implementando a função a formula:
-        =Y0+v\*sen(teta)delta_t-(G\*delta_t^2)/2.
+        Implementando a função referente a fórmula formula:
+        Y=Y0+v*sen(teta)delta_t-(G*delta_t^2)/2.
 
         :param delta_t:
         :return:
@@ -178,6 +179,19 @@ class Passaro(Ator):
         y_atual += self.velocidade_escalar * delta_t * math.sin(angulo_radianos)   # Utiliza math.sin para calcular o seno
         y_atual -= (GRAVIDADE * (delta_t ** 2)) / 2
         self.y = y_atual
+
+    def _calcular_posicao_horizontal(self, delta_t):
+        """
+        Implementando a referente a fórmula:
+        X=X0+v*cos(teta)*delta_t
+
+        :param delta_t:
+        :return:
+        """
+        x_atual = self._x_inicial
+        angulo_radianos = math.radians(self._angulo_de_lancamento)
+        x_atual += self.velocidade_escalar*delta_t*math.cos(angulo_radianos)
+        self.x = x_atual
 
 class PassaroAmarelo(Passaro):
     _caracter_ativo = 'A'

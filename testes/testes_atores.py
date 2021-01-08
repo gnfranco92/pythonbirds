@@ -315,7 +315,7 @@ class PassaroAmareloTests(PassaroBaseTests):
 
     def test_lancamento_45_graus(self):
         passaro_amarelo = PassaroAmarelo(1, 1)
-        passaro_amarelo.lancar(45, 2)  # passaro lancado a 45 graus no tempo 2 segundos
+        passaro_amarelo.lancar(45, 2)  # passaro lancado a 45 graus no tempo 2 segundos, x e y varia.
         self.assert_passaro_posicao(1, 1, ATIVO, passaro_amarelo, 2.0)
         self.assert_passaro_posicao(1, 1, ATIVO, passaro_amarelo, 2.01)
         self.assert_passaro_posicao(1, 1, ATIVO, passaro_amarelo, 2.02)
